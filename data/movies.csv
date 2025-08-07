@@ -1,0 +1,101 @@
+movieId,title,genres,year
+1,"Toy Story (1995)",Animation|Children|Comedy,1995
+2,"Jumanji (1995)",Adventure|Children|Fantasy,1995
+3,"Grumpier Old Men (1995)",Comedy|Romance,1995
+4,"Waiting to Exhale (1995)",Comedy|Drama|Romance,1995
+5,"Father of the Bride Part II (1995)",Comedy,1995
+6,"Heat (1995)",Action|Crime|Thriller,1995
+7,"Sabrina (1995)",Comedy|Romance,1995
+8,"Tom and Huck (1995)",Adventure|Children,1995
+9,"Sudden Death (1995)",Action,1995
+10,"GoldenEye (1995)",Action|Adventure|Thriller,1995
+11,"American President, The (1995)",Comedy|Drama|Romance,1995
+12,"Dracula: Dead and Loving It (1995)",Comedy|Horror,1995
+13,"Balto (1995)",Animation|Children,1995
+14,"Nixon (1995)",Drama,1995
+15,"Cutthroat Island (1995)",Action|Adventure|Romance,1995
+16,"Casino (1995)",Crime|Drama,1995
+17,"Sense and Sensibility (1995)",Drama|Romance,1995
+18,"Four Rooms (1995)",Comedy,1995
+19,"Ace Ventura: When Nature Calls (1995)",Comedy,1995
+20,"Money Train (1995)",Action|Comedy|Crime|Drama|Thriller,1995
+21,"Get Shorty (1995)",Comedy|Crime|Thriller,1995
+22,"Copycat (1995)",Crime|Drama|Horror|Mystery|Thriller,1995
+23,"Assassins (1995)",Action|Crime|Thriller,1995
+24,"Powder (1995)",Drama|Sci-Fi,1995
+25,"Leaving Las Vegas (1995)",Drama|Romance,1995
+26,"Othello (1995)",Drama,1995
+27,"Now and Then (1995)",Children|Drama,1995
+28,"Persuasion (1995)",Drama|Romance,1995
+29,"City of Lost Children, The (1995)",Adventure|Drama|Fantasy|Mystery|Sci-Fi,1995
+30,"Shanghai Triad (Yao a yao yao dao waipo qiao) (1995)",Crime|Drama,1995
+31,"Dangerous Minds (1995)",Drama,1995
+32,"Twelve Monkeys (1995)",Mystery|Sci-Fi|Thriller,1995
+33,"Wings of the Dove, The (1997)",Drama|Romance,1997
+34,"Salut cousin! (1996)",Comedy,1996
+35,"Paradise Lost: The Child Murders at Robin Hood Hills (1996)",Documentary,1996
+36,"The Godfather (1972)",Crime|Drama,1972
+37,"The Shawshank Redemption (1994)",Drama,1994
+38,"Forrest Gump (1994)",Comedy|Drama|Romance,1994
+39,"Pulp Fiction (1994)",Comedy|Crime|Drama|Thriller,1994
+40,"The Matrix (1999)",Action|Sci-Fi|Thriller,1999
+41,"Goodfellas (1990)",Crime|Drama,1990
+42,"The Silence of the Lambs (1991)",Crime|Drama|Thriller,1991
+43,"Schindler's List (1993)",Drama|War,1993
+44,"The Dark Knight (2008)",Action|Crime|Drama|Thriller,2008
+45,"Inception (2010)",Action|Adventure|Sci-Fi|Thriller,2010
+46,"Interstellar (2014)",Adventure|Drama|Sci-Fi,2014
+47,"The Avengers (2012)",Action|Adventure|Sci-Fi,2012
+48,"Black Panther (2018)",Action|Adventure|Sci-Fi,2018
+49,"Parasite (2019)",Comedy|Drama|Thriller,2019
+50,"Joker (2019)",Crime|Drama|Thriller,2019
+51,"Dune (2021)",Adventure|Drama|Sci-Fi,2021
+52,"No Time to Die (2021)",Action|Adventure|Thriller,2021
+53,"Spider-Man: No Way Home (2021)",Action|Adventure|Fantasy,2021
+54,"The Batman (2022)",Action|Crime|Drama,2022
+55,"Top Gun: Maverick (2022)",Action|Drama,2022
+56,"Black Panther: Wakanda Forever (2022)",Action|Adventure|Drama,2022
+57,"Avatar: The Way of Water (2022)",Action|Adventure|Fantasy,2022
+58,"Everything Everywhere All at Once (2022)",Action|Adventure|Comedy,2022
+59,"The Whale (2022)",Drama,2022
+60,"Elvis (2022)",Biography|Drama|Music,2022
+61,"Oppenheimer (2023)",Biography|Drama|History,2023
+62,"Barbie (2023)",Adventure|Comedy|Fantasy,2023
+63,"The Super Mario Bros. Movie (2023)",Animation|Adventure|Comedy,2023
+64,"Guardians of the Galaxy Vol. 3 (2023)",Action|Adventure|Comedy,2023
+65,"Spider-Man: Across the Spider-Verse (2023)",Animation|Action|Adventure,2023
+66,"Mission: Impossible - Dead Reckoning Part One (2023)",Action|Adventure|Thriller,2023
+67,"Killers of the Flower Moon (2023)",Crime|Drama|History,2023
+68,"Poor Things (2023)",Comedy|Drama|Romance,2023
+69,"The Holdovers (2023)",Comedy|Drama,2023
+70,"American Fiction (2023)",Comedy|Drama,2023
+71,"Dune: Part Two (2024)",Action|Adventure|Drama,2024
+72,"Poor Things (2024)",Comedy|Drama|Romance,2024
+73,"The Zone of Interest (2024)",Drama|War,2024
+74,"Anatomy of a Fall (2024)",Crime|Drama|Mystery,2024
+75,"Killers of the Flower Moon (2024)",Crime|Drama|History,2024
+76,"The Holdovers (2024)",Comedy|Drama,2024
+77,"American Fiction (2024)",Comedy|Drama,2024
+78,"Maestro (2024)",Biography|Drama|Music,2024
+79,"Past Lives (2024)",Drama|Romance,2024
+80,"The Boy and the Heron (2024)",Animation|Adventure|Drama,2024
+81,"Godzilla x Kong: The New Empire (2024)",Action|Adventure|Sci-Fi,2024
+82,"Deadpool & Wolverine (2024)",Action|Adventure|Comedy,2024
+83,"Furiosa: A Mad Max Saga (2024)",Action|Adventure|Sci-Fi,2024
+84,"Inside Out 2 (2024)",Animation|Adventure|Comedy,2024
+85,"Joker: Folie à Deux (2024)",Crime|Drama|Musical,2024
+86,"The Fall Guy (2024)",Action|Comedy|Crime,2024
+87,"Civil War (2024)",Action|Drama|Thriller,2024
+88,"Kingdom of the Planet of the Apes (2024)",Action|Adventure|Sci-Fi,2024
+89,"The Bikeriders (2024)",Action|Crime|Drama,2024
+90,"Argylle (2024)",Action|Comedy|Thriller,2024
+91,"Madame Web (2024)",Action|Adventure|Sci-Fi,2024
+92,"Bob Marley: One Love (2024)",Biography|Drama|Music,2024
+93,"Anyone But You (2024)",Comedy|Romance,2024
+94,"Mean Girls (2024)",Comedy|Musical|Romance,2024
+95,"The Beekeeper (2024)",Action|Crime|Thriller,2024
+96,"Lisa Frankenstein (2024)",Comedy|Horror|Romance,2024
+97,"Drive-Away Dolls (2024)",Comedy|Crime|Drama,2024
+98,"Ordinary Angels (2024)",Drama|Family,2024
+99,"Land of Bad (2024)",Action|Drama|Thriller,2024
+100,"The Ministry of Ungentlemanly Warfare (2024)",Action|Comedy|War,2024 

@@ -1,0 +1,234 @@
+{% extends "base.html" %}
+
+{% block title %}Get Recommendations - Movie Recommendation System{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <h2 class="mb-4">
+        <i class="fas fa-star me-2"></i>Get Movie Recommendations
+    </h2>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-tags me-2"></i>Content-Based Recommendations
+                    </h5>
+                    <p class="card-text">Get movies similar to a specific movie based on genres and features.</p>
+                    <div class="input-group">
+                        <input type="number" class="form-control" id="movie-id-cb" placeholder="Enter Movie ID (e.g., 1)">
+                        <button class="btn btn-primary" type="button" id="get-cb-recommendations">
+                            <i class="fas fa-search me-2"></i>Get Similar Movies
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-users me-2"></i>Collaborative Filtering
+                    </h5>
+                    <p class="card-text">Get recommendations based on what similar users have rated highly.</p>
+                    <div class="input-group">
+                        <input type="number" class="form-control" id="user-id-cf" placeholder="Enter User ID (e.g., 1)">
+                        <button class="btn btn-primary" type="button" id="get-cf-recommendations">
+                            <i class="fas fa-users me-2"></i>Get Recommendations
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-brain me-2"></i>Hybrid Recommendations
+                    </h5>
+                    <p class="card-text">Combine both content-based and collaborative filtering for the best results.</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">User ID</span>
+                                <input type="number" class="form-control" id="user-id-hybrid" placeholder="e.g., 1">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">Movie ID (Optional)</span>
+                                <input type="number" class="form-control" id="movie-id-hybrid" placeholder="e.g., 1">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" type="button" id="get-hybrid-recommendations">
+                        <i class="fas fa-magic me-2"></i>Get Hybrid Recommendations
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Results Section -->
+    <div id="results-section" style="display: none;">
+        <h3 class="mb-3">
+            <i class="fas fa-list me-2"></i>Recommendations
+        </h3>
+        <div id="recommendations-results" class="row">
+            <!-- Results will be displayed here -->
+        </div>
+    </div>
+    
+    <div id="loading" class="loading" style="display: none;">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <p class="mt-2">Generating recommendations...</p>
+    </div>
+    
+    <div id="error-message" class="alert alert-danger" style="display: none;">
+        <!-- Error messages will be displayed here -->
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+$(document).ready(function() {
+    // Content-based recommendations
+    $('#get-cb-recommendations').click(function() {
+        const movieId = $('#movie-id-cb').val();
+        if (!movieId) {
+            showError('Please enter a Movie ID');
+            return;
+        }
+        getRecommendations('content-based', { movie_id: movieId });
+    });
+    
+    // Collaborative filtering recommendations
+    $('#get-cf-recommendations').click(function() {
+        const userId = $('#user-id-cf').val();
+        if (!userId) {
+            showError('Please enter a User ID');
+            return;
+        }
+        getRecommendations('collaborative', { user_id: userId });
+    });
+    
+    // Hybrid recommendations
+    $('#get-hybrid-recommendations').click(function() {
+        const userId = $('#user-id-hybrid').val();
+        const movieId = $('#movie-id-hybrid').val();
+        
+        if (!userId) {
+            showError('Please enter a User ID');
+            return;
+        }
+        
+        const params = { user_id: userId };
+        if (movieId) {
+            params.movie_id = movieId;
+        }
+        
+        getRecommendations('hybrid', params);
+    });
+    
+    function getRecommendations(type, params) {
+        // Show loading
+        $('#loading').show();
+        $('#results-section').hide();
+        $('#error-message').hide();
+        
+        // Make API call
+        $.ajax({
+            url: `/api/recommendations/${type}`,
+            method: 'GET',
+            data: params,
+            success: function(response) {
+                $('#loading').hide();
+                displayRecommendations(response.recommendations, type);
+            },
+            error: function(xhr, status, error) {
+                $('#loading').hide();
+                const errorMsg = xhr.responseJSON ? xhr.responseJSON.error : 'An error occurred';
+                showError(errorMsg);
+            }
+        });
+    }
+    
+    function displayRecommendations(recommendations, type) {
+        const resultsContainer = $('#recommendations-results');
+        resultsContainer.empty();
+        
+        if (!recommendations || recommendations.length === 0) {
+            showError('No recommendations found');
+            return;
+        }
+        
+        recommendations.forEach(function(movie, index) {
+            let scoreInfo = '';
+            if (type === 'content-based') {
+                scoreInfo = `<span class="badge bg-info">Similarity: ${movie.similarity_score}</span>`;
+            } else if (type === 'collaborative') {
+                scoreInfo = `<span class="badge bg-success">Predicted Rating: ${movie.predicted_rating}</span>`;
+            } else if (type === 'hybrid') {
+                scoreInfo = `
+                    <span class="badge bg-info me-1">CF: ${movie.cf_score || 0}</span>
+                    <span class="badge bg-warning me-1">CB: ${movie.cb_score || 0}</span>
+                    <span class="badge bg-primary">Hybrid: ${movie.hybrid_score || 0}</span>
+                `;
+            }
+            
+            const movieCard = `
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="movie-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <span class="badge bg-secondary">#${index + 1}</span>
+                                ${scoreInfo}
+                            </div>
+                            <h5 class="movie-title">${movie.title}</h5>
+                            <p class="movie-genres">${movie.genres}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="movie-year">${movie.year || ''}</span>
+                                <button class="btn btn-sm btn-outline-primary get-similar" 
+                                        data-movie-id="${movie.movieId}">
+                                    <i class="fas fa-star me-1"></i>Get Similar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            resultsContainer.append(movieCard);
+        });
+        
+        // Add click handlers for "Get Similar" buttons
+        $('.get-similar').click(function() {
+            const movieId = $(this).data('movie-id');
+            $('#movie-id-cb').val(movieId);
+            $('#get-cb-recommendations').click();
+        });
+        
+        $('#results-section').show();
+    }
+    
+    function showError(message) {
+        $('#error-message').text(message).show();
+    }
+    
+    // Check for movie_id in URL parameters (for direct links from search)
+    const urlParams = new URLSearchParams(window.location.search);
+    const movieId = urlParams.get('movie_id');
+    if (movieId) {
+        $('#movie-id-cb').val(movieId);
+        $('#get-cb-recommendations').click();
+    }
+});
+</script>
+{% endblock %} 
