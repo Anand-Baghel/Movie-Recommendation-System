@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from recommendation_system import MovieRecommendationSystem
 import json
-
+import streamlit as st
 app = Flask(__name__)
 
 # Initialize the recommendation system
@@ -11,7 +11,8 @@ try:
 except Exception as e:
     print(f"❌ Error initializing recommendation system: {e}")
     recommender = None
-
+st.title("Movie Recommendation System")
+st.write("Welcome to your Streamlit app!")
 @app.route('/')
 def index():
     """Main page with web interface"""
